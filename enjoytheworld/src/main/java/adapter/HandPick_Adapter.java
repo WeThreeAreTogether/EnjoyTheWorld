@@ -1,11 +1,15 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+import com.three.enjoytheworld.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,12 +66,12 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
         this.list.addAll(list);
         notifyDataSetChanged();
     }
-    /*//用户展示的图片
+    //用户展示的图片
     private void getPicassoImageData(String imgPath, ImageView imageView, int i) {
         //1 加载用户头像,2 加载用户展示图片
         switch (i) {
             case 1:
-                Picasso.with(context)
+               /* Picasso.with(context)
                         .load(imgPath)
                         .config(Bitmap.Config.RGB_565)
                         .placeholder(R.mipmap.avator_login)//默认展示的图片
@@ -88,17 +92,17 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
                                 return "TransForm";
                             }
                         })
-                        .into(imageView);
+                        .into(imageView);*/
                 break;
             case 2:
                 Picasso.with(context)
                         .load(imgPath)
                         .centerCrop()
-                        .placeholder(R.mipmap.merchandise_slideshow_default_640x400)
+                        .placeholder(R.mipmap.img_back_download_error)
                         .config(Bitmap.Config.RGB_565)
                         .resize(context.getResources().getDisplayMetrics().widthPixels + 60, 400)
                         .into(imageView);
                 break;
         }
-    }*/
+    }
 }

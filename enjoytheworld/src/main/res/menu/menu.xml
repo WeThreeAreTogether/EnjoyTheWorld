@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_message"
+        android:icon="@mipmap/abc_btn_check_to_on_mtrl_015"
+
+        android:title="@string/menu_message"/>
+    <item
+        android:id="@+id/menu_cache"
+        android:icon="@mipmap/abc_btn_check_to_on_mtrl_015"
+        android:title="@string/menu_cache"/>
+    <item
+        android:id="@+id/menu_suggestion"
+        android:icon="@mipmap/abc_btn_check_to_on_mtrl_015"
+        android:title="@string/menu_suggestion"/>
+    <item
+        android:id="@+id/menu_contribute"
+        android:icon="@mipmap/abc_btn_check_to_on_mtrl_015"
+        android:title="@string/menu_contribute"/>
+</menu>

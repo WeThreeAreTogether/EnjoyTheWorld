@@ -18,7 +18,7 @@ import recyclerview.recyclerview.XRecylcerView;
 public class FindFragment extends Fragment {
 
 
-
+//klkl
     public FindFragment() {
         // Required empty public constructor
     }

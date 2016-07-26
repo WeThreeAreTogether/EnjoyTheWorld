@@ -18,22 +18,40 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
-            <ImageView
+            <!--<TextView
                 android:id="@+id/iv_main_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:src="@mipmap/ic_action_menu"
+                android:clickable="true"
+                android:onClick="click"/>-->
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_main_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Today"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:textSize="15sp"
                 android:onClick="click"/>
 
-            <ImageView
+            <TextView
+                android:textColor="#000000"
                 android:id="@+id/iv_main_eye"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:text="Eyepetizer"
+                android:textSize="25sp"
                 android:src="@mipmap/ic_action_focus"/>
 
             <ImageView
+                android:layout_centerVertical="true"
                 android:id="@+id/iv_main_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,5 +1,7 @@
 package com.three.enjoytheworld;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -9,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private HandpickFragment mHandpickFragment;
     private AuthorFragment mAuthorFragment;
 
-
+    private TextView left_DrawLayout_Text;
+    private TextView logo_Text;
 
     private ViewPager viewPager;
     private DrawerLayout drawerLayout;
@@ -44,9 +48,16 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
 
         initView();
+        AssetManager assetManager=getAssets();
+        Typeface tf=Typeface.createFromAsset(assetManager,"fonts/Lobster-1.4.otf");
+        left_DrawLayout_Text.setTypeface(tf);
+        logo_Text.setTypeface(tf);
     }
 
     private void initView() {
+        left_DrawLayout_Text= (TextView) findViewById(R.id.iv_main_menu);
+        logo_Text= (TextView) findViewById(R.id.iv_main_eye);
+
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 

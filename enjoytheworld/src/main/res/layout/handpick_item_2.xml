@@ -6,8 +6,8 @@
     <TextView
         android:id="@+id/handpick_item_2_text_1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:text="date"
-        android:textSize="30dp"
+        android:textSize="20sp"
         android:gravity="center"/>
 </LinearLayout>

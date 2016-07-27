@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,20 +34,14 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
 
     public void setList(List<HandPick_Bean.IssueListBean.ItemListBean> list) {
         this.list = list;
-        Log.e("0000000000000000000000", "setList: "+list.size() );
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=null;
         ViewHolder viewHolder=null;
-        /*Log.e("wwwwwwww", "onCreateViewHolder:111111111111111111111111111111 ");
-        Log.e("wwwwwwww", "onCreateViewHolder: "+list.get(viewType).getType() );
-        Log.e("wwwwwwww", "onCreateViewHolder:222222222222222222222222222222 ");*/
-
         switch (list.get(viewType).getType()){
             case "video":
-//                Log.e("wwwwwwww", "onCreateViewHolder: " );
                 view= LayoutInflater.from(context).inflate(R.layout.handpick_item_1,parent,false);
                 viewHolder=new ViewHolder(view);
                 viewHolder.textView1= (TextView) view.findViewById(R.id.handpick_item_1_text_1);
@@ -57,7 +50,6 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
                 viewHolder.imageView1= (ImageView) view.findViewById(R.id.handpick_item_1_img_1);
                 break;
             case "textHeader":
-//                Log.e("qqqqqqqq", "onCreateViewHolder: " );
                 view= LayoutInflater.from(context).inflate(R.layout.handpick_item_2,parent,false);
                 viewHolder=new ViewHolder(view);
                 viewHolder.textView1= (TextView) view.findViewById(R.id.handpick_item_2_text_1);
@@ -153,12 +145,13 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
                         .into(imageView);*/
                 break;
             case 2:
+                //终点,看笔记
+                imageView.setAdjustViewBounds(true);
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                 Picasso.with(context)
                         .load(imgPath)
-                        .centerCrop()
                         .placeholder(R.mipmap.img_back_download_error)
                         .config(Bitmap.Config.RGB_565)
-                        .resize(context.getResources().getDisplayMetrics().widthPixels + 60, 400)
                         .into(imageView);
                 break;
         }

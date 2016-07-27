@@ -53,5 +53,23 @@
         android:text="详细信息"
         android:textColor="#000000"
         android:textSize="20dp"/>
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/video_iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           />
+        <ImageView
+            android:id="@+id/video_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_player_play"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 </LinearLayout>

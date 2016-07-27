@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
 
         initView();
+        //设置字体样式
         AssetManager assetManager=getAssets();
         Typeface tf=Typeface.createFromAsset(assetManager,"fonts/Lobster-1.4.otf");
         left_DrawLayout_Text.setTypeface(tf);

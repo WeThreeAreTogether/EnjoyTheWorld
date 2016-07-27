@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/iv_author_icon"
+        android:layout_width="@dimen/pic_wh"
+        android:layout_height="@dimen/pic_wh"
+        android:layout_marginRight="@dimen/right"
+        android:layout_marginTop="@dimen/top"
+        android:layout_marginLeft="@dimen/left"
+        android:src="@mipmap/ic_eye_black_error"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_author_more"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/right"
+        android:src="@mipmap/ic_action_more_arrow_dark"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_author_title"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/iv_author_icon"
+        android:layout_toEndOf="@+id/iv_author_icon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subTitle"
+        android:id="@+id/tv_author_subtitle"
+        android:layout_marginLeft="@dimen/left"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:layout_alignBottom="@+id/tv_author_title"
+        android:layout_toRightOf="@id/tv_author_title"
+        android:layout_toLeftOf="@id/iv_author_more"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:id="@+id/tv_author_description"
+        android:layout_below="@+id/tv_author_title"
+        android:layout_marginTop="@dimen/line_spacing"
+        android:textSize="14sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:layout_toRightOf="@id/iv_author_icon"
+        android:layout_toLeftOf="@id/iv_author_more"/>
+
+
+</RelativeLayout>

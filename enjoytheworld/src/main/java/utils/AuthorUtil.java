@@ -5,5 +5,4 @@ package utils;
  */
 public class AuthorUtil {
 
-    public static String Author="";
 }

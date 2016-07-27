@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.squareup.picasso.Picasso;
 import com.three.enjoytheworld.R;
@@ -15,8 +16,7 @@ import com.three.enjoytheworld.R;
 import java.util.List;
 
 import bean.FindLVBean;
-import io.vov.vitamio.Vitamio;
-import io.vov.vitamio.widget.VideoView;
+
 
 /**
  * Created by admin on 2016/7/26.

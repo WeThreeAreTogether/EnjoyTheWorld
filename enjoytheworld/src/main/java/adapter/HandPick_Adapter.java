@@ -58,6 +58,7 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
         this.list = list;
     }
 
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=null;

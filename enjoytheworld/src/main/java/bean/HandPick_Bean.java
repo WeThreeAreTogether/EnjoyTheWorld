@@ -846,6 +846,35 @@ public class HandPick_Bean {
                 private String text;
                 private String font;
 
+                public String getImage() {
+                    return image;
+                }
+
+                public void setImage(String image) {
+                    this.image = image;
+                }
+
+                public String getActionUrl() {
+                    return actionUrl;
+                }
+
+                public void setActionUrl(String actionUrl) {
+                    this.actionUrl = actionUrl;
+                }
+
+                public String getShade() {
+                    return shade;
+                }
+
+                public void setShade(String shade) {
+                    this.shade = shade;
+                }
+
+                private String image;
+                private String actionUrl;
+                private String shade;
+//                private String adTrack;
+
                 public String getText() {
                     return text;
                 }

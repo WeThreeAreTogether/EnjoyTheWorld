@@ -63,6 +63,11 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
         View view=null;
         ViewHolder viewHolder=null;
         switch (list.get(viewType).getType()){
+            case "banner1":
+                view=LayoutInflater.from(context).inflate(R.layout.handpick_head_layout,parent,false);
+                viewHolder=new ViewHolder(view);
+                viewHolder.imageView1= (ImageView) view.findViewById(R.id.handpick_head_img_1);
+                break;
             case "video":
                 view= LayoutInflater.from(context).inflate(R.layout.handpick_item_1,parent,false);
                 viewHolder=new ViewHolder(view);
@@ -86,6 +91,10 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         switch (list.get(position).getType()){
+            case "banner1":
+//                holder.imageView1
+                getPicassoImageData(list.get(position).getData().getImage(),holder.imageView1,2);
+                break;
             case "video":
                 holder.textView1.setText(list.get(position).getData().getTitle());
                 holder.textView1.setTextColor(Color.WHITE);

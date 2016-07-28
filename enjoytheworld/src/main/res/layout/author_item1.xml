@@ -12,6 +12,7 @@
         android:layout_marginRight="@dimen/right"
         android:layout_marginTop="@dimen/top"
         android:layout_marginLeft="@dimen/left"
+        android:layout_marginBottom="@dimen/bottom"
         android:src="@mipmap/ic_eye_black_error"/>
     <ImageView
         android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
         android:textStyle="bold"
         android:id="@+id/tv_author_title"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/iv_author_icon"
         android:layout_toEndOf="@+id/iv_author_icon"/>
 
@@ -40,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/subTitle"
+        android:textSize="12sp"
         android:id="@+id/tv_author_subtitle"
         android:layout_marginLeft="@dimen/left"
         android:singleLine="true"

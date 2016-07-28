@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="260dp">
+
+
+    <ImageView
+        android:id="@+id/iv_author_cover"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/img_back_download_error"/>
+    <TextView
+        android:id="@+id/tv_author_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:layout_centerInParent="true"/>
+    <RelativeLayout
+        android:id="@+id/rl_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/tv_author_title">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_author_category"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/xiegang"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_author_xieguang"
+            android:layout_toRightOf="@id/tv_author_category"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/line_spacing"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/duration"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_author_duration"
+            android:layout_toRightOf="@id/tv_author_xieguang"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/line_spacing"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/line_spacing"
+        android:padding="3dp"
+        android:text="@string/name"
+        android:textSize="12sp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorAlpha"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/rl_author"/>
+
+
+
+
+</RelativeLayout>

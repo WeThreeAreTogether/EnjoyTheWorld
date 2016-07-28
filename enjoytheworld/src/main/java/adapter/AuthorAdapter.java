@@ -61,7 +61,9 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
 
     }
 
-
+    public List<AuthorBean.ItemListBean> getData() {
+        return data;
+    }
 
     public interface OnItemClickListen{
 

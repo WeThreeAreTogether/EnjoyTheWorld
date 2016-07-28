@@ -1,6 +1,7 @@
 package fragment;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -100,7 +101,8 @@ public class AuthorFragment extends Fragment implements AuthorAdapter.OnItemClic
     private void initData() {
         OkHttpClient okHttpClient = new OkHttpClient();
 
-        Request request = new Request.Builder().url(AuthorUri.AUTHOR_URL).build();
+        String path = AuthorUri.HEAD + AuthorUri.FIRST + AuthorUri.TAIL;
+        Request request = new Request.Builder().url(path).build();
 
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
@@ -168,7 +170,7 @@ public class AuthorFragment extends Fragment implements AuthorAdapter.OnItemClic
                     data = mAuthorBean.getItemList();
 
 
-                    getActivity().runOnUiThread(new Runnable() {
+                    ((Activity)getContext()).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
 
@@ -188,7 +190,25 @@ public class AuthorFragment extends Fragment implements AuthorAdapter.OnItemClic
     @Override
     public void onItemClick(int position) {
 
-        Intent intent = new Intent(getContext(), AuthorItemActivity.class);
-        startActivity(intent);
+        AuthorBean.ItemListBean bean = mAuthorAdapter.getData().get(position);
+        String type = bean.getType();
+        if ("briefCard".equals(type) || "videoCollectionWithBrief".equals(type)){
+            Intent intent = new Intent(getContext(), AuthorItemActivity.class);
+
+            AuthorBean.ItemListBean.DataBean beanData = bean.getData();
+            if (beanData.getId() !=0 ){
+                intent.putExtra("itemId", beanData.getId());
+                intent.putExtra("title",beanData.getTitle());
+            }else {
+                intent.putExtra("itemId", beanData.getHeader().getId());
+                intent.putExtra("title",bean.getData().getHeader().getTitle());
+            }
+
+
+
+            startActivity(intent);
+        }
+
+
     }
 }

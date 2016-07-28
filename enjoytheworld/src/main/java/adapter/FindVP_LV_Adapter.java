@@ -1,18 +1,12 @@
 package adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.transition.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 import com.squareup.picasso.Picasso;
 import com.three.enjoytheworld.R;
@@ -21,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.FindLVBean;
-
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.MediaController;

@@ -28,5 +28,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.picasso:picasso:2.3.2'
-    compile project(':vitamioLibrary')
+//    compile project(':vitamioLibrary')
+    compile 'com.kogitune:pre-lollipop-activity-transition:1.0.0'
 }

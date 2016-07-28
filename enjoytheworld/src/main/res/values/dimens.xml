@@ -14,10 +14,10 @@
     <dimen name="left">10dp</dimen>
     <dimen name="right">10dp</dimen>
     <dimen name="bottom">10dp</dimen>
-    <dimen name="pic_wh">60dp</dimen>
+    <dimen name="pic_wh">50dp</dimen>
     <dimen name="pic_width">150dp</dimen>
     <dimen name="pic_height">120dp</dimen>
-    <dimen name="line_spacing">10dp</dimen>
+    <dimen name="line_spacing">5dp</dimen>
 
 
 </resources>

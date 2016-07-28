@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.three.enjoytheworld.FindSecondAcivity">
+    tools:context="com.three.enjoytheworld.ZhuanTiActivity">
     <RelativeLayout
         android:id="@+id/ll_01"
         android:layout_width="match_parent"
         android:layout_height="40dp">
-      <ImageView
-          android:id="@+id/back"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:src="@mipmap/ic_action_back"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_action_back"/>
         <TextView
             android:id="@+id/tv"
             android:layout_width="wrap_content"
@@ -22,20 +22,6 @@
             android:textSize="20dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
-        <ImageView
-            android:id="@+id/share"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@mipmap/ic_action_share_grey"
-            android:layout_toRightOf="@id/tv"
-            />
-        <ImageView
-            android:id="@+id/focus"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@mipmap/ic_action_focus"
-            android:layout_toRightOf="@id/share"
-           />
     </RelativeLayout>
     <View
         android:id="@+id/view"

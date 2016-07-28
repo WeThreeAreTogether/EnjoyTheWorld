@@ -10,4 +10,41 @@ public class FindUri {
 //  其中ViewPager的第一个页卡的点击的事件是:
 //  http://baobab.wandoujia.com/api/v1/video/7910   7910 7912 7914 7916 7920 7922
   public static String ViewPager_One="http://baobab.wandoujia.com/api/v1/video/";
+
+//  ViewPager下第一个item的点击事件:  其中需要替换的字段是:strategy=weekly或是monthly或是historical
+//
+//  周排行: http://baobab.wandoujia.com/api/v3/ranklist?num=10&strategy=weekly&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+//
+//  月排行:http://baobab.wandoujia.com/api/v3/ranklist?num=10&strategy=monthly&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+//
+//  总排行:http://baobab.wandoujia.com/api/v3/ranklist?num=10&strategy=historical&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+
+  public static String PopularBase="http://baobab.wandoujia.com/api/v3/ranklist?num=10&strategy=%s&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19";
+
+//  viewPager下第二个item的点击事件:专题页面
+//
+//  http://baobab.wandoujia.com/api/v3/specialTopics?udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+
+  public static String ZhuanTi="http://baobab.wandoujia.com/api/v3/specialTopics?udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19";
+
+//  360度全景:需要替换的字段是:strategy=date或是strategy=shareCount
+//
+//  按时间排序:http://baobab.wandoujia.com/api/v3/tag/videos?tagId=658&strategy=date&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+//
+//  按分享排序:http://baobab.wandoujia.com/api/v3/tag/videos?tagId=658&strategy=shareCount&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+  public static String QuanJing="http://baobab.wandoujia.com/api/v3/tag/videos?tagId=658&strategy=%s&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19";
+
+//  网格的点击事件:
+//
+//  其中需要替换的字段是:
+//
+//  categoryId=14 是被点击的item的id号
+//
+//          strategy=date或是shareCount
+//
+//  http://baobab.wandoujia.com/api/v3/videos?categoryId=14&strategy=date&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+//
+//  http://baobab.wandoujia.com/api/v3/videos?categoryId=14&strategy=shareCount&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+
+  public static String WangGe="http://baobab.wandoujia.com/api/v3/videos?categoryId=%s&strategy=%s&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19";
 }

@@ -24,6 +24,9 @@
         </activity>
         <activity android:name=".AuthorDetailActivity">
         </activity>
+        <activity android:name=".FindSecondAcivity" />
+        <activity android:name=".FindThreeActivity" />
+        <activity android:name=".ZhuanTiActivity"></activity>
     </application>
 
 </manifest>

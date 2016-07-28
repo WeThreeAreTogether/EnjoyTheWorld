@@ -1,6 +1,10 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.transition.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +12,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.VideoView;
+
 
 import com.squareup.picasso.Picasso;
 import com.three.enjoytheworld.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import bean.FindLVBean;
+
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.Vitamio;
+import io.vov.vitamio.widget.MediaController;
+import io.vov.vitamio.widget.VideoView;
 
 
 /**
@@ -27,13 +37,19 @@ public class FindVP_LV_Adapter extends BaseAdapter {
     private LayoutInflater inflater;
     public FindVP_LV_Adapter(Context context, List<FindLVBean> list) {
         this.context = context;
-        this.list = list;
+
         inflater=LayoutInflater.from(context);
+        if(list==null)
+        {
+            this.list=new ArrayList<>();
+        }else{
+            this.list=list;
+        }
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return list==null?0:list.size();
     }
 
     @Override
@@ -48,7 +64,7 @@ public class FindVP_LV_Adapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
         if(view==null)
         {
             view=inflater.inflate(R.layout.findlistview_oneitem,viewGroup,false);
@@ -60,12 +76,12 @@ public class FindVP_LV_Adapter extends BaseAdapter {
             viewHolder.vitamio= (VideoView) view.findViewById(R.id.video);
             viewHolder.imageViewBackground= (ImageView) view.findViewById(R.id.video_iv);
             viewHolder.imageViewStart= (ImageView) view.findViewById(R.id.video_start);
-            viewHolder.imageViewTotalBackground= (LinearLayout) view.findViewById(R.id.linearlayout);
+            viewHolder.imageViewTotalBackground= (ImageView) view.findViewById(R.id.background);
             view.setTag(viewHolder);
         }else {
             viewHolder= (ViewHolder) view.getTag();
         }
-        FindLVBean lvBean=list.get(i);
+        final FindLVBean lvBean=list.get(i);
         viewHolder.textViewTitle.setText(lvBean.getTitle()+"");
         viewHolder.textViewCategory.setText(lvBean.getCategory()+"");
         viewHolder.textViewDetail.setText(lvBean.getDescription()+"");
@@ -76,14 +92,55 @@ public class FindVP_LV_Adapter extends BaseAdapter {
             int seconds=totlaTime%60;
             viewHolder.textViewTime.setText(minute+"'"+seconds+"\"");
         }
+      //加载背景图片
+        loadImage(lvBean.getCoverBlurred(),viewHolder.imageViewTotalBackground);
 
+
+
+
+        //加载vitmio上的背景图片
+        loadImage(lvBean.getCoverForDetail(),viewHolder.imageViewBackground);
+        //点击图片,图片消失,视频开始播放
+        viewHolder.imageViewBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewHolder.imageViewBackground.setVisibility(View.GONE);
+                viewHolder.imageViewStart.setVisibility(View.GONE);
+                //加载vitmio
+                Vitamio.isInitialized(context);
+                viewHolder.vitamio.setVideoPath(lvBean.getPlayUrl());
+                viewHolder.vitamio.setMediaController(new MediaController(context));
+                viewHolder.vitamio.start();
+            }
+        });
+        //点击开始图标后开始播放视频
+        viewHolder.imageViewStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewHolder.imageViewBackground.setVisibility(View.GONE);
+                viewHolder.imageViewStart.setVisibility(View.GONE);
+                //加载vitmio
+                Vitamio.isInitialized(context);
+                viewHolder.vitamio.setVideoPath(lvBean.getPlayUrl());
+                viewHolder.vitamio.setMediaController(new MediaController(context));
+                viewHolder.vitamio.start();
+            }
+        });
+       //视频播放完成,图片展示
+        viewHolder.vitamio.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                viewHolder.imageViewBackground.setVisibility(View.VISIBLE);
+                viewHolder.imageViewStart.setVisibility(View.VISIBLE);
+            }
+        });
         return view;
     }
     public class ViewHolder{
         private TextView textViewTitle,textViewCategory,textViewTime,textViewDetail;
         private VideoView vitamio;
-        private ImageView imageViewBackground,imageViewStart;
-        private LinearLayout imageViewTotalBackground;
+        private ImageView imageViewBackground,imageViewStart,imageViewTotalBackground;
+       // private LinearLayout imageViewTotalBackground;
     }
     public void loadImage(String path,ImageView imageView)
     {

@@ -10,10 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.squareup.picasso.Picasso;
 import com.three.enjoytheworld.FindSecondAcivity;
+import com.three.enjoytheworld.FindThreeActivity;
 import com.three.enjoytheworld.R;
+import com.three.enjoytheworld.ZhuanTiActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -91,16 +96,20 @@ public class FindFragment extends Fragment {
                                 viewPagerList.add(imageView);
                                 viewPagerAdapter =new FindViewPagerAdapter(viewPagerList);
                                 viewPager.setAdapter(viewPagerAdapter);
-                                tag=i;
+                                imageView.setTag(i+"");
                                 //设置viewPager中图片的点击事件
                                 imageView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                       if(tag==0)
+                                       if(view.getTag().equals("0"))
                                        {
+                                           Log.i("nnn", "==========: "+"点击了ViewPager的第一张图片");
                                            Intent intent=new Intent(getContext(), FindSecondAcivity.class);
-                                           intent.putExtra("path",FindUri.ViewPager_One);
+                                           intent.putExtra("title","超级拼的领导人");
                                            startActivity(intent);
+
+                                       }else {
+                                           //点击ViewPager的第二个图片的点击事件
                                        }
                                     }
                                 });
@@ -149,6 +158,46 @@ public class FindFragment extends Fragment {
 //设置监听事件
     public void setListener()
     {
+        //点击最受欢迎
+        imageView_01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), FindThreeActivity.class);
+                intent.putExtra("name","最受欢迎");
+                startActivity(intent);
+            }
+        });
+        //点击热门专题
+        imageView_02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             Intent intent=new Intent(getContext(),ZhuanTiActivity.class);
+                intent.putExtra("name","热门专题");
+                startActivity(intent);
+            }
+        });
+        //点击360全景
+        imageView_03.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), FindThreeActivity.class);
+                intent.putExtra("name","360度全景");
+                startActivity(intent);
+            }
+        });
+        grideView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getContext(),"点击了第"+i+"个条目",Toast.LENGTH_LONG).show();
+                String id=grideViewList.get(i).getId();
+                int idInt=Integer.parseInt(id);
+                String name=grideViewList.get(i).getTltle();
+                Intent intent=new Intent(getContext(),FindThreeActivity.class);
+                intent.putExtra("name",name);
+                intent.putExtra("id",idInt);
+                startActivity(intent);
 
+            }
+        });
     }
 }

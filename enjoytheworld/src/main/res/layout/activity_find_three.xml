@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.three.enjoytheworld.FindSecondAcivity">
+    tools:context="com.three.enjoytheworld.FindThreeActivity">
     <RelativeLayout
         android:id="@+id/ll_01"
         android:layout_width="match_parent"
         android:layout_height="40dp">
-      <ImageView
-          android:id="@+id/back"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:src="@mipmap/ic_action_back"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_action_back"/>
         <TextView
             android:id="@+id/tv"
             android:layout_width="wrap_content"
@@ -35,7 +36,7 @@
             android:layout_height="match_parent"
             android:src="@mipmap/ic_action_focus"
             android:layout_toRightOf="@id/share"
-           />
+            />
     </RelativeLayout>
     <View
         android:id="@+id/view"
@@ -43,11 +44,22 @@
         android:layout_height="2dp"
         android:layout_below="@id/ll_01"
         android:background="#a9a9a1"></View>
-    <ListView
-        android:id="@+id/listview"
+    <android.support.design.widget.TabLayout
+        xmlns:MyApp="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/view">
-
-    </ListView>
+        android:layout_height="40dp"
+        android:id="@+id/tablayout"
+        android:layout_below="@id/view"
+        MyApp:tabBackground="@drawable/tablayoutselect"
+        MyApp:tabIndicatorColor="@null"
+        MyApp:tabMode="fixed"
+        MyApp:tabSelectedTextColor="#801212"
+        ></android.support.design.widget.TabLayout>
+     <android.support.v4.view.ViewPager
+         android:id="@+id/viewpager"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/tablayout"
+         >
+     </android.support.v4.view.ViewPager>
 </RelativeLayout>

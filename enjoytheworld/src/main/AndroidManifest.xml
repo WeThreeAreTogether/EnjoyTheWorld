@@ -20,17 +20,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".FindSecondAcivity" />
+        <activity android:name=".AuthorItemActivity" />
+        <activity android:name=".AuthorDetailActivity" />
+        <activity android:name=".HandPick_WebViewActivity" />
+        <activity android:name=".FindSecondAcivity" />
         <activity android:name=".AuthorItemActivity"></activity>
         <activity android:name=".AuthorDetailActivity"></activity>
-        <activity android:name=".HandPick_WebViewActivity"></activity>
-        <activity android:name=".FindSecondAcivity"/>
-        <activity android:name=".AuthorItemActivity">
-        </activity>
-        <activity android:name=".AuthorDetailActivity">
-        </activity>
         <activity android:name=".FindSecondAcivity" />
         <activity android:name=".FindThreeActivity" />
-        <activity android:name=".ZhuanTiActivity"></activity>
+        <activity android:name=".ZhuanTiActivity" />
+        <activity android:name=".HandPick_ShowItem_Activity"></activity>
     </application>
 
 </manifest>

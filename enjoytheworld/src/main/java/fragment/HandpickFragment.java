@@ -1,6 +1,7 @@
 package fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.three.enjoytheworld.HandPick_WebViewActivity;
 import com.three.enjoytheworld.R;
 
 import java.io.IOException;
@@ -38,6 +40,8 @@ public class HandpickFragment extends Fragment implements SwipeRefreshLayout.OnR
     private HandPick_Adapter mHandPick_adapter;
 
     private String addMaoreUrl = null;
+
+//    private HandPick_Adapter.ItemOnClickListener itemOnClickListener;
 
     public HandpickFragment() {
         // Required empty public constructor
@@ -97,6 +101,20 @@ public class HandpickFragment extends Fragment implements SwipeRefreshLayout.OnR
                         mHandPick_adapter.clear();
                         mHandPick_adapter.setList(itemList);
                         xRecylcerView.setAdapter(mHandPick_adapter);
+                        mHandPick_adapter.OnClickListener(new HandPick_Adapter.ItemOnClickListener() {
+                            @Override
+                            public void setOnClickListener(int position,String title,String web_URL) {
+                                Toast.makeText(getContext(), "" + position, Toast.LENGTH_SHORT).show();
+                                if ("banner1".equals(itemList.get(position).getType())) {
+                                    Intent intent = new Intent(getContext(), HandPick_WebViewActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("title",title);
+                                    bundle.putString("web_URL",web_URL);
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                }
+                            }
+                        });
                         addMaoreUrl = nextPageUrl;
 
                     }
@@ -174,4 +192,5 @@ public class HandpickFragment extends Fragment implements SwipeRefreshLayout.OnR
             }
         }, 2000);
     }
+
 }

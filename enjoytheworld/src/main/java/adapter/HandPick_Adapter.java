@@ -3,11 +3,14 @@ package adapter;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -24,7 +27,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kogitune.activity_transition.ActivityTransitionLauncher;
 import com.squareup.picasso.Picasso;
+import com.three.enjoytheworld.HandPick_ShowItem_Activity;
 import com.three.enjoytheworld.R;
 
 import java.io.UnsupportedEncodingException;
@@ -35,6 +40,7 @@ import java.util.List;
 
 import bean.HandPick_Bean;
 import recyclerview.recyclerview.XRecylcerView;
+import utils.HandPick_All_Static_Obj;
 
 /**
  * Created by Sadewangzi on 2016/7/26.
@@ -43,7 +49,7 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
     private Context context;
     private List<HandPick_Bean.IssueListBean.ItemListBean> list = new ArrayList<>();
 
-//    private XRecylcerView recyclerView;
+    //    private XRecylcerView recyclerView;
     //传递 title,webUrl;
     private String title;
     private String webUrl;
@@ -122,7 +128,7 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-//                Log.e("WEBDECODE", "转码后: " + webUrl);
+                Log.e("WEBDECODE", "转码后: " + webUrl);
 
 
                 break;
@@ -211,10 +217,37 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
                 @Override
                 public void onClick(View v) {
                     if (itemOnClickListener != null) {
-                        itemOnClickListener.setOnClickListener(position,title,webUrl);
+                        itemOnClickListener.setOnClickListener(position, title, webUrl);
                     }
                     if ("video".equals(list.get(position).getType())) {
-                        imgObjAnimation(holder.imageView1);
+//                        imgObjAnimation(holder.imageView1);
+
+                        holder.imageView1.buildDrawingCache();
+                        HandPick_All_Static_Obj.bitmap = holder.imageView1.getDrawingCache();
+//                        Log.e("bitmap", ""+HandPick_All_Static_Obj.bitmap.getByteCount());
+                        //先实现跳转,然后明天在实现接口回调,在fragment  中实现跳转
+                        Intent intent = new Intent(context, HandPick_ShowItem_Activity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("title", holder.textView1.getText().toString());
+                        bundle.putString("time", holder.textView2.getText().toString());
+                        bundle.putString("describe", list.get(position).getData().getDescription());
+                        bundle.putString("collectionCount", "" + list.get(position).getData().getConsumption().getCollectionCount());
+                        bundle.putString("shareCount", "" + list.get(position).getData().getConsumption().getShareCount());
+                        bundle.putString("replyCount", "" + list.get(position).getData().getConsumption().getReplyCount());
+                        bundle.putString("background_img_url", list.get(position).getData().getCover().getBlurred());
+                        if (list.get(position).getData().getAuthor() != null) {
+                            HandPick_All_Static_Obj.isNotEmpty=true;
+                            bundle.putString("image_show_second", list.get(position).getData().getAuthor().getIcon());
+                            bundle.putString("second_title", list.get(position).getData().getAuthor().getName());
+                            bundle.putString("second_describe", list.get(position).getData().getAuthor().getDescription());
+                            bundle.putString("video_num", "" + list.get(position).getData().getAuthor().getVideoNum());
+//                        bundle.putString("","");
+                        }
+                        //这个传递过去一个list,包含3个链接的集合
+                        bundle.putString("video_url",list.get(position).getData().getPlayUrl());
+                        intent.putExtras(bundle);
+                        ActivityTransitionLauncher.with((Activity) context).from(v).launch(intent);
+//                        context.startActivity(new Intent(context, HandPick_ShowItem_Activity.class));
                     }
                 }
             });
@@ -288,12 +321,15 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
                         .placeholder(R.mipmap.img_back_download_error)
                         .config(Bitmap.Config.RGB_565)
                         .into(imageView);
+                //写一个全局的参数,进行bitm的传送
                 break;
         }
     }
-//设置接口
+
+    //设置接口
     public interface ItemOnClickListener {
-        void setOnClickListener(int position,String title,String web_URL);
+        void setOnClickListener(int position, String title, String web_URL);
+//        void setOnShowItemListener(int position,String );
     }
 
     //图片放大属性动画
@@ -349,7 +385,9 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
+                //实现跳转????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+               /* Intent intent=new Intent(context,HandPick_ShowItem_Activity.class);
+                ActivityTransitionLauncher.with((Activity) context).from(imageView).launch(intent);*/
             }
 
             @Override
@@ -374,4 +412,5 @@ public class HandPick_Adapter extends RecyclerView.Adapter<HandPick_Adapter.View
         alphaAnimation.setDuration(500);
         relativeLayout.startAnimation(alphaAnimation);
     }
+
 }

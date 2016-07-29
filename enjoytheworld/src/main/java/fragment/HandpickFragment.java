@@ -113,6 +113,7 @@ public class HandpickFragment extends Fragment implements SwipeRefreshLayout.OnR
                                     intent.putExtras(bundle);
                                     startActivity(intent);
                                 }
+
                             }
                         });
                         addMaoreUrl = nextPageUrl;

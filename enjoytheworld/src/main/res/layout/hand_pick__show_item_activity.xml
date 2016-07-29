@@ -1,36 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/the_most_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/transparent"
     tools:context="com.three.enjoytheworld.HandPick_ShowItem_Activity">
-<ImageView
-    android:id="@+id/handpick_showitem_img_1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:src="@mipmap/img_back_download_error"/>
-    <RelativeLayout
-        android:layout_below="@id/handpick_showitem_img_1"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <TextView
-            android:id="@+id/handpick_showitem_text_1"
+        <RelativeLayout
+            android:id="@+id/cover_img"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="title"
-            android:textSize="20sp"
-            />
-        <TextView
-            android:id="@+id/handpick_showitem_text_2"
-            android:layout_below="@id/handpick_showitem_text_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="tiime"
-            android:textSize="20sp"
-            />
-    </RelativeLayout>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/handpick_showitem_img_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:onClick="showItemImgOnClick"
+                android:src="@mipmap/img_back_download_error"
+                />
+        </RelativeLayout>
+
     <ImageView
+        android:id="@+id/handpick_showitem_img_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="showItemImgOnClick"
+        android:src="@mipmap/ic_action_open_detail_more_down_1" />
+
+
+    <RelativeLayout
+        android:id="@+id/handpick_showitem_layotu_should_hind_first_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/cover_img">
+
+        <ImageView
+            android:id="@+id/img_message_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/handpick_showitem_img_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="showItemImgOnClick"
+            android:src="@mipmap/ic_action_open_detail_more_up_1" />
+
+        <RelativeLayout
+            android:id="@+id/handpick_showitem_layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@id/handpick_showitem_img_2">
+
+            <TextView
+                android:id="@+id/handpick_showitem_text_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="title"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/handpick_showitem_text_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/handpick_showitem_text_1"
+                android:text="time"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/handpick_head_relative_layout_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/handpick_showitem_layout_1">
+
+            <ImageView
+                android:id="@+id/image_show_second_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:src="@mipmap/account_default_avatar_circle" />
+
+            <TextView
+                android:id="@+id/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/image_show_second_activity"
+                android:layout_toRightOf="@id/image_show_second_activity"
+                android:text="第二个标题" />
+
+            <TextView
+                android:id="@+id/describe_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/image_show_second_activity"
+                android:layout_toRightOf="@id/image_show_second_activity"
+                android:text="选项卡描述" />
+
+            <TextView
+                android:id="@+id/video_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/title_2"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/title_2"
+                android:text="视频数"
+                android:textSize="10dp" />
+
+            <ImageView
+                android:id="@+id/right_action_more_arrowaction_more_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_action_more_arrow" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/handpick_showitem_text_describe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/handpick_showitem_layout_2"
+            android:layout_below="@+id/handpick_head_relative_layout_3"
+            android:padding="10dp"
+            android:text="describe"
+            android:textColor="#ffffff" />
+
+        <LinearLayout
+            android:id="@+id/handpick_showitem_layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/handpick_showitem_img_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="showItemImgOnClick"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_action_favorites_without_padding" />
+
+            <TextView
+                android:id="@+id/handpick_showitem_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/handpick_showitem_img_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:onClick="showItemImgOnClick"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_action_share_without_padding" />
+
+            <TextView
+                android:id="@+id/handpick_showitem_text_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/handpick_showitem_img_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:onClick="showItemImgOnClick"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_action_reply_nopadding" />
+
+            <TextView
+                android:id="@+id/handpick_showitem_text_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/handpick_showitem_img_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:onClick="showItemImgOnClick"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_action_offline_without_padding" />
+
+            <TextView
+                android:id="@+id/handpick_showitem_text_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="缓存"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 </RelativeLayout>

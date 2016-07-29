@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -32,6 +33,11 @@ public class HandPick_WebViewActivity extends AppCompatActivity {
 
     private void setData() {
         titleTextView.setText(title);
+        WebSettings settings = webView.getSettings();
+        //启用Js支持
+        settings.setJavaScriptEnabled(true);
+        //js可以弹出窗体 对话框
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);
         webView.loadUrl(web_URL);
     }
 
@@ -43,4 +49,6 @@ public class HandPick_WebViewActivity extends AppCompatActivity {
     public void imgBackOnClick(View view) {
         finish();
     }
+
+
 }

@@ -2,8 +2,10 @@ package adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,14 +27,15 @@ import bean.AuthorBean;
 public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdapter.ViewHolder> {
 
 
+    private static final String TAG = AuthorAdapterAdapter.class.getSimpleName();
     private Context mContext;
     private List<AuthorBean.ItemListBean.DataBean.ItemList2Bean> data = new ArrayList<>();
 
-    private OnItemDetailClickListen mOnItemDetailClickListen;
-
-    public void setOnItemDetailClickListen(OnItemDetailClickListen onItemDetailClickListen) {
-        mOnItemDetailClickListen = onItemDetailClickListen;
-    }
+//    private OnItemDetailClickListen mOnItemDetailClickListen;
+//
+//    public void setOnItemDetailClickListen(OnItemDetailClickListen onItemDetailClickListen) {
+//        mOnItemDetailClickListen = onItemDetailClickListen;
+//    }
 
     public AuthorAdapterAdapter(Context context, List<AuthorBean.ItemListBean.DataBean.ItemList2Bean> data) {
 
@@ -40,15 +43,17 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
         if (data != null) {
             this.data = data;
         }
+
     }
 
 
-    public interface OnItemDetailClickListen{
-        void onItemDetailClickListen(int position);
-    }
+//    public interface OnItemDetailClickListen{
+//        void onItemDetailClickListen(int position);
+//    }
 
     @Override
     public int getItemCount() {
+        Log.i(TAG, "getItemCount: "+data.size());
         return data!=null ? data.size():0;
     }
 
@@ -56,6 +61,7 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.i(TAG, "onCreateViewHolder: ");
         View view = LayoutInflater.from(mContext).inflate(R.layout.author_item20, parent, false);
         return new ViewHolder(view);
     }
@@ -63,18 +69,17 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, AuthorDetailActivity.class));
-            }
-        });
+        Log.i(TAG, "onBindViewHolder: ");
+
         AuthorBean.ItemListBean.DataBean.ItemList2Bean bean = data.get(position);
-        AuthorBean.ItemListBean.DataBean.ItemList2Bean.Data2Bean data1 = bean.getData();
+
+        Log.i(TAG, "onBindViewHolder: bean数据"+bean.toString());
         if (bean != null) {
+            AuthorBean.ItemListBean.DataBean.ItemList2Bean.Data2Bean data1 = bean.getData2();
 
             if (data1 != null) {
                 String title = data1.getTitle();
+                Log.i(TAG, "onBindViewHolder: "+title);
                 if (!TextUtils.isEmpty(title)){
                     holder.tv_title.setText(title);
                 }
@@ -103,6 +108,20 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
             }
         }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, AuthorDetailActivity.class);
+                //设置标记，当flag为2时正常跳转
+                intent.putExtra("flag",2);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("data2",data.get(position).getData2());
+                intent.putExtras(bundle);
+
+                mContext.startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -119,8 +138,8 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
             iv_cover = ((ImageView) itemView.findViewById(R.id.iv_author_cover));
 
             tv_title = ((TextView) itemView.findViewById(R.id.tv_author_title));
-            tv_category = ((TextView) itemView.findViewById(R.id.tv_author_title_category));
-            tv_duration = ((TextView) itemView.findViewById(R.id.tv_author_title_duration));
+            tv_category = ((TextView) itemView.findViewById(R.id.tv_author_category));
+            tv_duration = ((TextView) itemView.findViewById(R.id.tv_author_duration));
         }
     }
 }

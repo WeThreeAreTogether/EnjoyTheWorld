@@ -1,7 +1,9 @@
 package adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.kogitune.activity_transition.ActivityTransitionLauncher;
 import com.squareup.picasso.Picasso;
 import com.three.enjoytheworld.AuthorDetailActivity;
 import com.three.enjoytheworld.R;
@@ -24,6 +27,7 @@ import bean.AuthorItemBean;
  */
 public class AuthorItemAdapter extends RecyclerView.Adapter<AuthorItemAdapter.ViewHolder> {
 
+    private static final String TAG = AuthorItemAdapter.class.getSimpleName();
     private Context mContext;
     private List<AuthorItemBean.ItemListBean> data = new ArrayList<>();
 
@@ -48,17 +52,25 @@ public class AuthorItemAdapter extends RecyclerView.Adapter<AuthorItemAdapter.Vi
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.author_item_detail, parent, false);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, AuthorDetailActivity.class));
-            }
-        });
+
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+
+        //设置图片的点击事件，实现共享视图跳转到另一个Activity
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, AuthorDetailActivity.class);
+                intent.putExtra("flag",1);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("data1",data.get(position).getData());
+                intent.putExtras(bundle);
+                ActivityTransitionLauncher.with((Activity) mContext).from(holder.iv_cover).launch(intent);
+            }
+        });
         AuthorItemBean.ItemListBean bean = data.get(position);
         if (bean != null) {
             AuthorItemBean.ItemListBean.DataBean data1 = bean.getData();

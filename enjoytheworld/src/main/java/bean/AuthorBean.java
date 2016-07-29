@@ -292,6 +292,14 @@ public class AuthorBean {
             }
 
             public static class ItemList2Bean {
+                @Override
+                public String toString() {
+                    return "ItemList2Bean{" +
+                            "data2=" + data2 +
+                            ", type='" + type + '\'' +
+                            '}';
+                }
+
                 private String type;
                 /**
                  * dataType : VideoBeanForClient
@@ -322,7 +330,7 @@ public class AuthorBean {
                  * label : null
                  */
 
-                private Data2Bean data;
+                private Data2Bean data2;
 
                 public String getType() {
                     return type;
@@ -332,15 +340,50 @@ public class AuthorBean {
                     this.type = type;
                 }
 
-                public Data2Bean getData() {
-                    return data;
+                public Data2Bean getData2() {
+                    return data2;
                 }
 
-                public void setData(Data2Bean data) {
-                    this.data = data;
+
+
+
+                public void setData2(Data2Bean data2) {
+                    this.data2 = data2;
                 }
 
-                public static class Data2Bean {
+                public static class Data2Bean implements Serializable{
+                    @Override
+                    public String toString() {
+                        return "Data2Bean{" +
+                                "adTrack=" + adTrack +
+                                ", dataType='" + dataType + '\'' +
+                                ", id=" + id +
+                                ", title='" + title + '\'' +
+                                ", description='" + description + '\'' +
+                                ", provider=" + provider +
+                                ", category='" + category + '\'' +
+                                ", author=" + author +
+                                ", cover=" + cover +
+                                ", playUrl='" + playUrl + '\'' +
+                                ", duration=" + duration +
+                                ", webUrl=" + webUrl +
+                                ", releaseTime=" + releaseTime +
+                                ", consumption=" + consumption +
+                                ", campaign=" + campaign +
+                                ", waterMarks=" + waterMarks +
+                                ", type='" + type + '\'' +
+                                ", idx=" + idx +
+                                ", shareAdTrack=" + shareAdTrack +
+                                ", favoriteAdTrack=" + favoriteAdTrack +
+                                ", webAdTrack=" + webAdTrack +
+                                ", date=" + date +
+                                ", promotion=" + promotion +
+                                ", label=" + label +
+                                ", playInfo=" + playInfo +
+                                ", tags=" + tags +
+                                '}';
+                    }
+
                     private String dataType;
                     private int id;
                     private String title;

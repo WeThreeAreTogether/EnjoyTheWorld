@@ -17,7 +17,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/iv_author_more"
+        android:id="@+id/iv_author_item_more"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
@@ -31,7 +31,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:id="@+id/tv_author_title"
+        android:id="@+id/tv_author_item_title"
         android:layout_alignParentTop="true"
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/iv_author_icon"
@@ -46,22 +46,22 @@
         android:layout_marginLeft="@dimen/left"
         android:singleLine="true"
         android:ellipsize="end"
-        android:layout_alignBottom="@+id/tv_author_title"
-        android:layout_toRightOf="@id/tv_author_title"
-        android:layout_toLeftOf="@id/iv_author_more"/>
+        android:layout_alignBottom="@+id/tv_author_item_title"
+        android:layout_toRightOf="@id/tv_author_item_title"
+        android:layout_toLeftOf="@id/iv_author_item_more"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/description"
-        android:id="@+id/tv_author_description"
-        android:layout_below="@+id/tv_author_title"
+        android:id="@+id/tv_author_item_description"
+        android:layout_below="@+id/tv_author_item_title"
         android:layout_marginTop="@dimen/line_spacing"
         android:textSize="14sp"
         android:singleLine="true"
         android:ellipsize="end"
         android:layout_toRightOf="@id/iv_author_icon"
-        android:layout_toLeftOf="@id/iv_author_more"/>
+        android:layout_toLeftOf="@id/iv_author_item_more"/>
 
 
 </RelativeLayout>

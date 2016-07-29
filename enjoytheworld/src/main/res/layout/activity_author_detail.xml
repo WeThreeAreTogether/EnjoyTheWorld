@@ -4,10 +4,218 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.three.enjoytheworld.AuthorDetailActivity">
+
+    <ImageView
+        android:id="@+id/iv_author_detail"
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="10dp"
+        android:background="@mipmap/ic_tab_strip_icon_pgc"
+        android:onClick="click"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:id="@+id/iv_author_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="click"
+        android:src="@mipmap/ic_action_detail_back"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/ic_player_play"/>
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:id="@+id/rl_author"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/iv_author_detail">
+
+        <ImageView
+            android:id="@+id/iv_author_blurred"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_tab_strip_icon_pgc"/>
+
+        <!--向上的箭头-->
+        <ImageView
+            android:id="@+id/iv_author_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:onClick="click"
+            android:src="@mipmap/ic_action_open_detail_more"/>
+
+        <TextView
+            android:id="@+id/tv_author_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/title"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_author_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_author_title"
+            android:layout_below="@id/tv_author_title"
+            android:layout_marginTop="15dp"
+            android:text="@string/category"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_author_xieguang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_author_title"
+            android:layout_marginLeft="@dimen/line_spacing"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/tv_author_category"
+            android:text="@string/xiegang"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_author_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_author_title"
+            android:layout_marginLeft="@dimen/line_spacing"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/tv_author_xieguang"
+            android:text="@string/duration"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_author_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_author_category"
+            android:clickable="true"
+            android:onClick="click"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/include_author_item1"
+                layout="@layout/author_item1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_author_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_author_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="click"
+                android:src="@mipmap/ic_action_favorites"/>
+
+            <TextView
+                android:id="@+id/tv_author_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="999+"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"/>
+
+            <ImageView
+                android:id="@+id/iv_author_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="15dp"
+                android:onClick="click"
+                android:src="@mipmap/ic_action_share_without_padding"/>
+
+            <TextView
+                android:id="@+id/tv_author_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="999+"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"/>
+
+            <ImageView
+                android:id="@+id/iv_author_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="15dp"
+                android:onClick="click"
+                android:src="@mipmap/ic_action_reply_nopadding"/>
+
+            <TextView
+                android:id="@+id/tv_author_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="999+"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"/>
+
+            <ImageView
+                android:id="@+id/iv_author_cache"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="15dp"
+                android:onClick="click"
+                android:src="@mipmap/action_download_cut"/>
+
+            <TextView
+                android:id="@+id/tv_author_cache"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/cache"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_author_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ll_author_bottom"
+            android:layout_alignLeft="@id/tv_author_title"
+            android:layout_below="@id/ll_author_item"
+            android:layout_marginTop="15dp"
+            android:text="@string/description"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

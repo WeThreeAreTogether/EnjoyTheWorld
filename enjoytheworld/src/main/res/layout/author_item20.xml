@@ -29,17 +29,17 @@
         android:layout_height="wrap_content"
         android:text="@string/category"
         android:textSize="12sp"
-        android:id="@+id/tv_author_title_category"
+        android:id="@+id/tv_author_category"
         android:layout_below="@id/tv_author_title"
-        android:layout_marginTop="3dp"/>
+        android:layout_marginTop="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/xiegang"
         android:textSize="12sp"
-        android:id="@+id/tv_author_title_xieguang"
+        android:id="@+id/tv_author_xieguang"
         android:layout_below="@id/tv_author_title"
-        android:layout_toRightOf="@id/tv_author_title_category"
+        android:layout_toRightOf="@id/tv_author_category"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="@dimen/line_spacing"/>
 
@@ -48,9 +48,9 @@
         android:layout_height="wrap_content"
         android:text="@string/duration"
         android:textSize="12sp"
-        android:id="@+id/tv_author_title_duration"
+        android:id="@+id/tv_author_duration"
         android:layout_below="@id/tv_author_title"
-        android:layout_toRightOf="@id/tv_author_title_xieguang"
+        android:layout_toRightOf="@id/tv_author_xieguang"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="@dimen/line_spacing"/>
 

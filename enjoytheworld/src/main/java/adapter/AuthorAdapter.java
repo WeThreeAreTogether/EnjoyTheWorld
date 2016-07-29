@@ -10,6 +10,7 @@ import android.graphics.RectF;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ import bean.AuthorBean;
 public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder> implements Transformation{
 
 
+    private static final String TAG = AuthorAdapter.class.getSimpleName();
     private Context mContext;
     private List<AuthorBean.ItemListBean> data = new ArrayList<>();
     private LayoutInflater mInflater;
@@ -204,7 +206,10 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
                     LinearLayoutManager manager = new LinearLayoutManager(mContext);
                     manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                     holder.mRecyclerView.setLayoutManager(manager);
+                    Log.i(TAG, "onBindViewHolder: 首页的横向Recycler准备设置适配器");
                     holder.mRecyclerView.setAdapter(new AuthorAdapterAdapter(mContext,itemList));
+
+                    Log.i(TAG, "onBindViewHolder: 首页的设置适配器成功");
                 }
             }
 
@@ -239,9 +244,9 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
             super(itemView);
 
             tv_text = (TextView) itemView.findViewById(R.id.tv_author_text);
-            tv_title = (TextView) itemView.findViewById(R.id.tv_author_title);
+            tv_title = (TextView) itemView.findViewById(R.id.tv_author_item_title);
             tv_subTitle = (TextView) itemView.findViewById(R.id.tv_author_subtitle);
-            tv_description = (TextView) itemView.findViewById(R.id.tv_author_description);
+            tv_description = (TextView) itemView.findViewById(R.id.tv_author_item_description);
 
             iv_icon = ((ImageView) itemView.findViewById(R.id.iv_author_icon));
             mRecyclerView = ((RecyclerView) itemView.findViewById(R.id.recyclerView_item2));

@@ -98,6 +98,7 @@ public class AuthorFragment extends Fragment implements AuthorAdapter.OnItemClic
     }
 
 
+    String json;
     private void initData() {
         OkHttpClient okHttpClient = new OkHttpClient();
 
@@ -116,13 +117,13 @@ public class AuthorFragment extends Fragment implements AuthorAdapter.OnItemClic
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
-                String json = response.body().string();
+                json = response.body().string();
 
                 Log.i(TAG, "onResponse: 解析之后的数据:" + json);
 
                 mAuthorBean = new Gson().fromJson(json, AuthorBean.class);
 
-                Log.i(TAG, "onResponse:------ "+mAuthorBean.getItemList().get(7).getData().getItemList().get(0).toString());
+//                Log.i(TAG, "onResponse:------ "+mAuthorBean.getItemList().get(7).getData().getItemList2().get(0).toString());
 
                 data = mAuthorBean.getItemList();
 
@@ -130,6 +131,7 @@ public class AuthorFragment extends Fragment implements AuthorAdapter.OnItemClic
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Log.i(TAG, "onResponse: 解析之后的数据:" + json);
                         Log.i(TAG, "onResponse: "+mAuthorBean.toString());
 
                         mAuthorAdapter.setData(data);

@@ -29,7 +29,7 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
 
     private static final String TAG = AuthorAdapterAdapter.class.getSimpleName();
     private Context mContext;
-    private List<AuthorBean.ItemListBean.DataBean.ItemList2Bean> data = new ArrayList<>();
+    private List<AuthorBean.ItemListBean.DataBean.ItemListBean2> data = new ArrayList<>();
 
 //    private OnItemDetailClickListen mOnItemDetailClickListen;
 //
@@ -37,7 +37,7 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
 //        mOnItemDetailClickListen = onItemDetailClickListen;
 //    }
 
-    public AuthorAdapterAdapter(Context context, List<AuthorBean.ItemListBean.DataBean.ItemList2Bean> data) {
+    public AuthorAdapterAdapter(Context context, List<AuthorBean.ItemListBean.DataBean.ItemListBean2> data) {
 
         mContext = context;
         if (data != null) {
@@ -71,11 +71,11 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
 
         Log.i(TAG, "onBindViewHolder: ");
 
-        AuthorBean.ItemListBean.DataBean.ItemList2Bean bean = data.get(position);
+        AuthorBean.ItemListBean.DataBean.ItemListBean2 bean = data.get(position);
 
         Log.i(TAG, "onBindViewHolder: bean数据"+bean.toString());
         if (bean != null) {
-            AuthorBean.ItemListBean.DataBean.ItemList2Bean.Data2Bean data1 = bean.getData2();
+            AuthorBean.ItemListBean.DataBean.ItemListBean2.DataBean2 data1 = bean.getData();
 
             if (data1 != null) {
                 String title = data1.getTitle();
@@ -96,7 +96,7 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
 
                 }
 
-                AuthorBean.ItemListBean.DataBean.ItemList2Bean.Data2Bean.CoverBean cover = data1.getCover();
+                AuthorBean.ItemListBean.DataBean.ItemListBean2.DataBean2.CoverBean cover = data1.getCover();
                 if (cover != null) {
                     String feed = cover.getFeed();
                     if (!TextUtils.isEmpty(feed)){
@@ -113,9 +113,10 @@ public class AuthorAdapterAdapter extends RecyclerView.Adapter<AuthorAdapterAdap
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, AuthorDetailActivity.class);
                 //设置标记，当flag为2时正常跳转
+
                 intent.putExtra("flag",2);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("data2",data.get(position).getData2());
+                bundle.putSerializable("data2",data.get(position).getData());
                 intent.putExtras(bundle);
 
                 mContext.startActivity(intent);

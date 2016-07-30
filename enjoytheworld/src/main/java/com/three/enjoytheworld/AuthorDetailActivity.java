@@ -1,12 +1,12 @@
 package com.three.enjoytheworld;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,10 +33,11 @@ public class AuthorDetailActivity extends AppCompatActivity{
     private TextView tv_category;
     private TextView tv_duration;
 
-    private ImageView iv_item_icon;
-    private TextView tv_item_title;
-    private TextView tv_item_subTitle;
-    private TextView tv_item_description;
+//    private ImageView iv_item_icon;
+//    private TextView tv_item_title;
+//    private TextView tv_item_subTitle;
+//    private TextView tv_item_description;
+
     private TextView tv_description;
     private TextView tv_collect;
     private TextView tv_share;
@@ -53,7 +54,18 @@ public class AuthorDetailActivity extends AppCompatActivity{
     private int mShareCount;
     private String mDetail;
     private String mBlurred;
-    private AuthorBean.ItemListBean.DataBean.ItemList2Bean.Data2Bean data2;
+    private AuthorBean.ItemListBean.DataBean.ItemListBean2.DataBean2 data2;
+    private String mPlayUrl;
+
+    private boolean isNotFinish = true;
+
+//    private Handler handler = new Handler(){
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            setAnimation();
+//        }
+//    };
 
 
     @Override
@@ -69,9 +81,38 @@ public class AuthorDetailActivity extends AppCompatActivity{
 
         initView();
 
+//        while (isNotFinish){
+//            handler.sendEmptyMessageDelayed(0,2000);
+//        }
+
+
 
 
     }
+
+    /**
+     * 为图片设置动画效果
+     */
+    private void setAnimation() {
+
+        ScaleAnimation magnifyAnimation = new ScaleAnimation(0, 0, 0, 0,
+                ScaleAnimation.RELATIVE_TO_SELF, 1.2f,
+                ScaleAnimation.RELATIVE_TO_SELF, 1.2f);
+        magnifyAnimation.setDuration(1000);
+
+        ScaleAnimation shrinkAnimation = new ScaleAnimation(0, 0, 0, 0,
+                ScaleAnimation.RELATIVE_TO_SELF, 1.2f,
+                ScaleAnimation.RELATIVE_TO_SELF, 1.2f);
+        shrinkAnimation.setDuration(1000);
+        shrinkAnimation.setStartOffset(1000);
+
+    }
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        isNotFinish = false;
+//    }
 
     private void initActivity(Bundle savedInstanceState) {
         iv_detail = (ImageView) findViewById(R.id.iv_author_detail);
@@ -98,27 +139,28 @@ public class AuthorDetailActivity extends AppCompatActivity{
                 mDetail = cover.getDetail();
                 mBlurred = cover.getBlurred();
             }
+            mPlayUrl = data1.getPlayUrl();
 
         }else if (flag == 2){
-            data2 = ((AuthorBean.ItemListBean.DataBean.ItemList2Bean.Data2Bean) intent.getExtras().getSerializable("data2"));
+            data2 = ((AuthorBean.ItemListBean.DataBean.ItemListBean2.DataBean2) intent.getExtras().getSerializable("data2"));
 
-            data1 = (AuthorItemBean.ItemListBean.DataBean) intent.getExtras().getSerializable("data1");
-            mTitle = data1.getTitle();
-            mCategory = data1.getCategory();
-            mDuration = data1.getDuration();
-            mDescription = data1.getDescription();
-            AuthorItemBean.ItemListBean.DataBean.ConsumptionBean consumption = data1.getConsumption();
+
+            mTitle = data2.getTitle();
+            mCategory = data2.getCategory();
+            mDuration = data2.getDuration();
+            mDescription = data2.getDescription();
+            AuthorBean.ItemListBean.DataBean.ItemListBean2.DataBean2.ConsumptionBean consumption = data2.getConsumption();
             if (consumption != null) {
                 mCollectionCount = consumption.getCollectionCount();
                 mReplyCount = consumption.getReplyCount();
                 mShareCount = consumption.getShareCount();
             }
-            AuthorItemBean.ItemListBean.DataBean.CoverBean cover = data1.getCover();
+            AuthorBean.ItemListBean.DataBean.ItemListBean2.DataBean2.CoverBean cover = data2.getCover();
             if (cover != null) {
                 mDetail = cover.getDetail();
                 mBlurred = cover.getBlurred();
             }
-
+            mPlayUrl = data2.getPlayUrl();
         }
     }
 
@@ -159,32 +201,32 @@ public class AuthorDetailActivity extends AppCompatActivity{
             tv_duration.setText(String.valueOf(minute)+"'"+String.valueOf(second)+"\"");
         }
 
-        tv_item_title = (TextView) findViewById(R.id.tv_author_item_title);
-        tv_item_title.setTextColor(Color.WHITE);
-        if (!TextUtils.isEmpty(mTitle)){
-            tv_title.setText(mTitle);
-        }
-
-        tv_item_subTitle = (TextView) findViewById(R.id.tv_author_subtitle);
-        tv_item_subTitle.setTextColor(Color.WHITE);
-        if (!TextUtils.isEmpty(mTitle)){
-            tv_title.setText(mTitle);
-        }
-
-        tv_item_description = (TextView) findViewById(R.id.tv_author_item_description);
-        tv_item_description.setTextColor(Color.WHITE);
-        if (!TextUtils.isEmpty(mTitle)){
-            tv_title.setText(mTitle);
-        }
-
-        iv_item_icon = (ImageView) findViewById(R.id.iv_author_icon);
-        if (!TextUtils.isEmpty(mTitle)){
-            tv_title.setText(mTitle);
-        }
+//        tv_item_title = (TextView) findViewById(R.id.tv_author_item_title);
+//        tv_item_title.setTextColor(Color.WHITE);
+//        if (!TextUtils.isEmpty(mTitle)){
+//            tv_title.setText(mTitle);
+//        }
+//
+//        tv_item_subTitle = (TextView) findViewById(R.id.tv_author_subtitle);
+//        tv_item_subTitle.setTextColor(Color.WHITE);
+//        if (!TextUtils.isEmpty(mTitle)){
+//            tv_title.setText(mTitle);
+//        }
+//
+//        tv_item_description = (TextView) findViewById(R.id.tv_author_item_description);
+//        tv_item_description.setTextColor(Color.WHITE);
+//        if (!TextUtils.isEmpty(mTitle)){
+//            tv_title.setText(mTitle);
+//        }
+//
+//        iv_item_icon = (ImageView) findViewById(R.id.iv_author_icon);
+//        if (!TextUtils.isEmpty(mTitle)){
+//            tv_title.setText(mTitle);
+//        }
 
         tv_description = (TextView) findViewById(R.id.tv_author_description);
-        if (!TextUtils.isEmpty(mTitle)){
-            tv_title.setText(mTitle);
+        if (!TextUtils.isEmpty(mDescription)){
+            tv_description.setText(mDescription);
         }
 
         tv_collect= (TextView) findViewById(R.id.tv_author_collect);
@@ -225,11 +267,14 @@ public class AuthorDetailActivity extends AppCompatActivity{
                 }
 
                 break;
-            //更多
-            case R.id.iv_author_more:
-                break;
-            //大图
+//            //更多
+//            case R.id.iv_author_more:
+//                break;
+            //大图点击播放视频
             case R.id.iv_author_detail:
+                Intent intent = new Intent(this, AuthorPlayActivity.class);
+                intent.putExtra("path",mPlayUrl);
+                startActivity(intent);
                 break;
             //收藏
             case R.id.iv_author_collect:
@@ -243,9 +288,7 @@ public class AuthorDetailActivity extends AppCompatActivity{
             //缓存
             case R.id.iv_author_cache:
                 break;
-            //复用的布局
-            case R.id.ll_author_item:
-                break;
+
 
 
         }

@@ -7,11 +7,16 @@
     tools:context="com.three.enjoytheworld.AuthorDetailActivity">
 
     <ImageView
+        android:id="@+id/iv_author_blurred"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_tab_strip_icon_pgc"/>
+    <ImageView
         android:id="@+id/iv_author_detail"
         android:layout_width="match_parent"
-        android:layout_height="325dp"
+        android:layout_height="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginRight="10dp"
         android:background="@mipmap/ic_tab_strip_icon_pgc"
         android:onClick="click"
         android:scaleType="fitXY"/>
@@ -22,14 +27,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:onClick="click"
-        android:src="@mipmap/ic_action_detail_back"/>
+        android:background="@mipmap/ic_action_detail_back"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:src="@mipmap/ic_player_play"/>
+        android:src="@mipmap/ic_action_play"/>
 
     <RelativeLayout
         android:layout_centerHorizontal="true"
@@ -38,25 +43,19 @@
         android:layout_height="match_parent"
         android:layout_below="@id/iv_author_detail">
 
-        <ImageView
-            android:id="@+id/iv_author_blurred"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="10dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_tab_strip_icon_pgc"/>
 
-        <!--向上的箭头-->
-        <ImageView
-            android:id="@+id/iv_author_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
 
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="30dp"
-            android:onClick="click"
-            android:src="@mipmap/ic_action_open_detail_more"/>
+        <!--&lt;!&ndash;向上的箭头&ndash;&gt;-->
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_author_more"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+
+            <!--android:layout_marginRight="30dp"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:onClick="click"-->
+            <!--android:src="@mipmap/ic_action_open_detail_more"/>-->
 
         <TextView
             android:id="@+id/tv_author_title"
@@ -107,22 +106,7 @@
             android:textSize="14sp"/>
 
 
-        <LinearLayout
-            android:id="@+id/ll_author_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_author_category"
-            android:clickable="true"
-            android:onClick="click"
-            android:orientation="horizontal">
 
-            <include
-                android:id="@+id/include_author_item1"
-                layout="@layout/author_item1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
 
 
         <LinearLayout
@@ -137,7 +121,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="click"
-                android:src="@mipmap/ic_action_favorites"/>
+                android:layout_margin="15dp"
+                android:src="@mipmap/ic_action_favorites_without_padding"/>
 
             <TextView
                 android:id="@+id/tv_author_collect"
@@ -209,9 +194,11 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/ll_author_bottom"
             android:layout_alignLeft="@id/tv_author_title"
-            android:layout_below="@id/ll_author_item"
+            android:layout_below="@id/tv_author_category"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/description"
+            android:ellipsize="end"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"/>
 

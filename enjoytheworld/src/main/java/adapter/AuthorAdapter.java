@@ -137,6 +137,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
 
         if ("leftAlignTextHeader".equals(type)) {
             //第一种布局
+            Log.i(TAG, "onBindViewHolder: 第一种布局");
             String text = itemListBean.getData().getText();
             if (!TextUtils.isEmpty(text)){
                 holder.tv_text.setText(text);
@@ -144,6 +145,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
 
         }else if ("briefCard".equals(type)){
             //第二种布局
+            Log.i(TAG, "onBindViewHolder: 第二种布局");
             AuthorBean.ItemListBean.DataBean data1 = itemListBean.getData();
             if (data1 != null){
                 String icon = data1.getIcon();
@@ -172,6 +174,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
             }
         }else if("videoCollectionWithBrief".equals(type)){
             //第三种布局
+            Log.i(TAG, "onBindViewHolder: 第三种布局");
 
             AuthorBean.ItemListBean.DataBean data2 = itemListBean.getData();
             if (data2 != null) {
@@ -200,7 +203,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
                         holder.tv_description.setText(description);
                     }
                 }
-                List<AuthorBean.ItemListBean.DataBean.ItemList2Bean> itemList = data2.getItemList();
+                List<AuthorBean.ItemListBean.DataBean.ItemListBean2> itemList = data2.getItemList();
                 if (itemList != null) {
 
                     LinearLayoutManager manager = new LinearLayoutManager(mContext);

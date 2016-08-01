@@ -3,6 +3,7 @@ package com.three.enjoytheworld;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class HandPick_Vitamio extends AppCompatActivity {
         //
         videoView.setVideoPath(intent.getStringExtra("url"));
 //        Toast.makeText(getApplicationContext(),""+intent.getStringExtra("url"),Toast.LENGTH_SHORT).show();
+        Log.e("url", "URL--- "+intent.getStringExtra("url"));
         //
         videoView.setMediaController(new MediaController(this));
         //

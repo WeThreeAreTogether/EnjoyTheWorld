@@ -72,6 +72,7 @@
              当设置了configChange之后就不会再重新走onCreate方法
             -->
         </activity>
+        <activity android:name=".HandPick_ShowMore_Item_1_Activity"></activity>
         <activity android:name=".FindSecond_TwoActivity"
             />
     </application>

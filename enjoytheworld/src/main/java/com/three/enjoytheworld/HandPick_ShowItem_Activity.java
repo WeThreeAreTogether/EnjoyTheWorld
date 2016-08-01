@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -23,7 +25,7 @@ import io.vov.vitamio.widget.VideoView;
 import utils.HandPick_All_Static_Obj;
 import utils.TransFormation;
 
-public class HandPick_ShowItem_Activity extends Activity {
+public class HandPick_ShowItem_Activity extends Activity implements GestureDetector.OnGestureListener{
     //视频上的图片展示
     private ImageView videoImage;
     //返回图片
@@ -86,6 +88,9 @@ public class HandPick_ShowItem_Activity extends Activity {
     private RelativeLayout handpick_head_relative_layout_3;
 
     private VideoView videoView;
+
+    //添加手势
+    private GestureDetector gestureDetector;
 
 
     private Handler handler = new Handler() {
@@ -249,6 +254,8 @@ public class HandPick_ShowItem_Activity extends Activity {
         handpick_head_relative_layout_3= (RelativeLayout) findViewById(R.id.handpick_head_relative_layout_3);
         //vitamio
 //        videoView= (VideoView) findViewById(R.id.video_view_1_show);
+        //初始化手势
+        gestureDetector=new GestureDetector(HandPick_ShowItem_Activity.this,this);
     }
 
     //重写的返回按钮
@@ -334,6 +341,7 @@ public class HandPick_ShowItem_Activity extends Activity {
                 break;
             //更多
             case R.id.handpick_showitem_img_2:
+                startActivity(new Intent(HandPick_ShowItem_Activity.this,HandPick_ShowMore_Item_1_Activity.class));
                 break;
             //收藏
             case R.id.handpick_showitem_img_4:
@@ -408,4 +416,43 @@ public class HandPick_ShowItem_Activity extends Activity {
         imageView.startAnimation(animation);
     }
 
+    //重写onTouchEvent
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureDetector.onTouchEvent(event);
+    }
+
+    //-------------------------------------手势操作----------------------------------------
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        if (motionEvent.getY()-motionEvent1.getY()>0){
+            startActivity(new Intent(HandPick_ShowItem_Activity.this,HandPick_ShowMore_Item_1_Activity.class));
+        }
+        return false;
+    }
 }

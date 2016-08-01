@@ -1,5 +1,6 @@
 package bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -18,6 +19,16 @@ public class FindPopular_LVBean
     private int count;
     private int total;
     private Object nextPageUrl;
+    private String nextPublishTime;
+
+    public String getNextPublishTime() {
+        return nextPublishTime;
+    }
+
+    public void setNextPublishTime(String nextPublishTime) {
+        this.nextPublishTime = nextPublishTime;
+    }
+
     /**
      * type : video
      * data : {"dataType":"VideoBeanForClient","id":8326,"title":"除了宝可梦还有这个会让你满街跑","description":"除了近期大热的「精灵宝可梦」以外，还有这个 2014 年就宣传过一轮的「Father.IO」：明年此时，让你在大街上体验射击游戏的快感~From fatherio","provider":{"name":"YouTube","alias":"youtube","icon":"http://img.wdjimg.com/image/video/fa20228bc5b921e837156923a58713f6_256_256.png"},"category":"广告","author":null,"cover":{"feed":"http://img.wdjimg.com/image/video/fc5812ce4c6e3bf5960932b0c0327f18_0_0.jpeg","detail":"http://img.wdjimg.com/image/video/fc5812ce4c6e3bf5960932b0c0327f18_0_0.jpeg","blurred":"http://img.wdjimg.com/image/video/f8fe3a827e0962bf6807f55a8c0fa55b_0_0.jpeg","sharing":null},"playUrl":"http://baobab.wandoujia.com/api/v1/playUrl?vid=8326&editionType=default","duration":146,"webUrl":{"raw":"http://www.wandoujia.com/eyepetizer/detail.html?vid=8326","forWeibo":"http://wandou.im/2mrw7d"},"releaseTime":1469247493000,"playInfo":[{"height":360,"width":640,"name":"流畅","type":"low","url":"http://baobab.wandoujia.com/api/v1/playUrl?vid=8326&editionType=low"},{"height":480,"width":854,"name":"标清","type":"normal","url":"http://baobab.wandoujia.com/api/v1/playUrl?vid=8326&editionType=normal"},{"height":720,"width":1280,"name":"高清","type":"high","url":"http://baobab.wandoujia.com/api/v1/playUrl?vid=8326&editionType=high"}],"consumption":{"collectionCount":2302,"shareCount":7412,"replyCount":129},"campaign":null,"waterMarks":null,"adTrack":null,"tags":[],"type":"NORMAL","idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1469247493000,"promotion":null,"label":null}
@@ -57,7 +68,7 @@ public class FindPopular_LVBean
         this.itemList = itemList;
     }
 
-    public static class ItemListBean {
+    public static class ItemListBean implements Serializable{
         private String type;
         /**
          * dataType : VideoBeanForClient
@@ -106,7 +117,7 @@ public class FindPopular_LVBean
             this.data = data;
         }
 
-        public static class DataBean {
+        public static class DataBean implements Serializable{
             private String dataType;
             private int id;
             private String title;
@@ -119,7 +130,7 @@ public class FindPopular_LVBean
 
             private ProviderBean provider;
             private String category;
-            private Object author;
+            private AuthorBean author;
             /**
              * feed : http://img.wdjimg.com/image/video/fc5812ce4c6e3bf5960932b0c0327f18_0_0.jpeg
              * detail : http://img.wdjimg.com/image/video/fc5812ce4c6e3bf5960932b0c0327f18_0_0.jpeg
@@ -214,11 +225,11 @@ public class FindPopular_LVBean
                 this.category = category;
             }
 
-            public Object getAuthor() {
+            public AuthorBean getAuthor() {
                 return author;
             }
 
-            public void setAuthor(Object author) {
+            public void setAuthor(AuthorBean author) {
                 this.author = author;
             }
 
@@ -373,8 +384,81 @@ public class FindPopular_LVBean
             public void setTags(List<?> tags) {
                 this.tags = tags;
             }
+            public static class AuthorBean implements Serializable{
+                private int id;
+                private String icon;
+                private String name;
+                private String description;
+                private String link;
+                private String latestReleaseTime;
+                private String videoNum;
+                private String adTrack;
 
-            public static class ProviderBean {
+                public int getId() {
+                    return id;
+                }
+
+                public String getIcon() {
+                    return icon;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public String getDescription() {
+                    return description;
+                }
+
+                public String getLink() {
+                    return link;
+                }
+
+                public String getLatestReleaseTime() {
+                    return latestReleaseTime;
+                }
+
+                public String getVideoNum() {
+                    return videoNum;
+                }
+
+                public String getAdTrack() {
+                    return adTrack;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public void setIcon(String icon) {
+                    this.icon = icon;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public void setDescription(String description) {
+                    this.description = description;
+                }
+
+                public void setLink(String link) {
+                    this.link = link;
+                }
+
+                public void setLatestReleaseTime(String latestReleaseTime) {
+                    this.latestReleaseTime = latestReleaseTime;
+                }
+
+                public void setVideoNum(String videoNum) {
+                    this.videoNum = videoNum;
+                }
+
+                public void setAdTrack(String adTrack) {
+                    this.adTrack = adTrack;
+                }
+            }
+            public static class ProviderBean implements Serializable{
                 private String name;
                 private String alias;
                 private String icon;
@@ -404,7 +488,7 @@ public class FindPopular_LVBean
                 }
             }
 
-            public static class CoverBean {
+            public static class CoverBean implements Serializable{
                 private String feed;
                 private String detail;
                 private String blurred;
@@ -443,7 +527,7 @@ public class FindPopular_LVBean
                 }
             }
 
-            public static class WebUrlBean {
+            public static class WebUrlBean implements Serializable{
                 private String raw;
                 private String forWeibo;
 
@@ -464,7 +548,7 @@ public class FindPopular_LVBean
                 }
             }
 
-            public static class ConsumptionBean {
+            public static class ConsumptionBean implements Serializable{
                 private int collectionCount;
                 private int shareCount;
                 private int replyCount;
@@ -493,8 +577,7 @@ public class FindPopular_LVBean
                     this.replyCount = replyCount;
                 }
             }
-
-            public static class PlayInfoBean {
+            public static class PlayInfoBean implements Serializable{
                 private int height;
                 private int width;
                 private String name;

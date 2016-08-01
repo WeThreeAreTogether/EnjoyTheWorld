@@ -1,5 +1,6 @@
 package bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -112,7 +113,7 @@ public class Find_QJ_Bean {
         }
     }
 
-    public static class ItemListBean {
+    public static class ItemListBean implements Serializable{
         private String type;
         /**
          * dataType : VideoBeanForClient
@@ -161,7 +162,7 @@ public class Find_QJ_Bean {
             this.data = data;
         }
 
-        public static class DataBean {
+        public static class DataBean implements Serializable{
             private String dataType;
             private int id;
             private String title;
@@ -439,7 +440,7 @@ public class Find_QJ_Bean {
             public void setTags(List<TagsBean> tags) {
                 this.tags = tags;
             }
-            public static class AuthorBean{
+            public static class AuthorBean implements Serializable{
                 private int id;
                 private String icon;
                 private String name;
@@ -514,7 +515,7 @@ public class Find_QJ_Bean {
                 }
             }
 
-            public static class ProviderBean {
+            public static class ProviderBean implements Serializable{
                 private String name;
                 private String alias;
                 private String icon;
@@ -544,7 +545,7 @@ public class Find_QJ_Bean {
                 }
             }
 
-            public static class CoverBean {
+            public static class CoverBean implements Serializable{
                 private String feed;
                 private String detail;
                 private String blurred;
@@ -583,7 +584,7 @@ public class Find_QJ_Bean {
                 }
             }
 
-            public static class WebUrlBean {
+            public static class WebUrlBean implements Serializable{
                 private String raw;
                 private String forWeibo;
 
@@ -604,7 +605,7 @@ public class Find_QJ_Bean {
                 }
             }
 
-            public static class ConsumptionBean {
+            public static class ConsumptionBean implements Serializable{
                 private int collectionCount;
                 private int shareCount;
                 private int replyCount;
@@ -634,7 +635,7 @@ public class Find_QJ_Bean {
                 }
             }
 
-            public static class LabelBean {
+            public static class LabelBean implements Serializable{
                 private String text;
 
                 public String getText() {
@@ -646,7 +647,7 @@ public class Find_QJ_Bean {
                 }
             }
 
-            public static class PlayInfoBean {
+            public static class PlayInfoBean implements Serializable{
                 private int height;
                 private int width;
                 private String name;
@@ -694,7 +695,7 @@ public class Find_QJ_Bean {
                 }
             }
 
-            public static class TagsBean {
+            public static class TagsBean implements Serializable{
                 private int id;
                 private String name;
                 private String actionUrl;

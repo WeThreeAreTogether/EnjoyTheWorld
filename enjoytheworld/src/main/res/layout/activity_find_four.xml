@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.three.enjoytheworld.FindFourActivity">
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="30dp">
+        <ImageView
+            android:id="@+id/back"
+            android:src="@mipmap/ic_action_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示题目"
+            android:textSize="20dp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/background"
+        android:layout_below="@id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_eye_black_error">
+    </ImageView>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_below="@id/relative"
+        android:layout_marginTop="5dp"
+        android:layout_height="30dp">
+        <TextView
+            android:id="@+id/pager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="#ff0026"
+            android:textSize="20dp"
+            android:layout_marginLeft="170dp"
+            />
+        <View
+            android:layout_width="10dp"
+            android:background="#ff0026"
+            android:layout_marginTop="10dp"
+            android:layout_height="2dp">
+        </View>
+        <TextView
+            android:id="@+id/pagerTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:textColor="#ff0026"
+            android:textSize="20dp"
+            ></TextView>
+
+    </LinearLayout>
+    <JazzyViewPager.JazzyViewPager
+        android:id="@+id/jazzyviewpager"
+        android:layout_width="match_parent"
+        android:layout_below="@id/linearLayout"
+        android:layout_height="450dp">
+
+    </JazzyViewPager.JazzyViewPager>
+
+    <ImageView
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/favorite"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

@@ -19,10 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".FindSecondAcivity"/>
         <activity android:name=".AuthorItemActivity"/>
         <activity android:name=".AuthorDetailActivity"
-            android:theme="@android:style/Theme.Translucent"/>
+          />
         <activity android:name=".HandPick_WebViewActivity"/>
 
 
@@ -40,6 +39,24 @@
 
 
 
+        <!--<activity android:name=".AuthorItemActivity" />-->
+        <!--<activity android:name=".AuthorDetailActivity" />-->
+        <!-- <activity android:name=".FindSecondAcivity" /> -->
+        <!-- <activity android:name=".AuthorItemActivity" /> -->
+        <!-- <activity android:name=".AuthorDetailActivity" /> -->
+        <!--<activity android:name=".HandPick_WebViewActivity" />-->
+        <!-- <activity android:name=".FindSecondAcivity" /> -->
+        <!-- <activity android:name=".AuthorItemActivity" /> -->
+        <!-- <activity android:name=".AuthorDetailActivity" /> -->
+        <!-- <activity android:name=".FindSecondAcivity" /> -->
+        <!--<activity android:name=".FindThreeActivity" />-->
+        <!--<activity android:name=".ZhuanTiActivity" />-->
+        <activity android:name=".FindFourActivity" />
+        <!-- <activity android:name=".ZhuanTiActivity" /> -->
+        <!-- <activity android:name=".HandPick_ShowItem_Activity" /> -->
+        <activity android:name=".FindFiveActivity"
+            android:theme="@android:style/Theme.Translucent"
+            />
         <activity
             android:name=".HandPick_ShowItem_Activity"
             android:theme="@android:style/Theme.Translucent" />
@@ -47,13 +64,16 @@
             android:name=".HandPick_Vitamio"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="landscape">
+
             <!--
              android:screenOrientation="landscape"
              android:configChanges="keyboardHidden|orientation"
              这两句为设置横屏和竖屏，在屏幕切换的时候默认为重新走OnCreate方法
              当设置了configChange之后就不会再重新走onCreate方法
-             -->
+            -->
         </activity>
+        <activity android:name=".FindSecond_TwoActivity"
+            />
     </application>
 
 </manifest>

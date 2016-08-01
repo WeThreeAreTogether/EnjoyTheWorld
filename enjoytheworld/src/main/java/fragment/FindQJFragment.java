@@ -1,5 +1,6 @@
 package fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,10 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.kogitune.activity_transition.ActivityTransitionLauncher;
+import com.three.enjoytheworld.FindFiveActivity;
 import com.three.enjoytheworld.R;
 
 import java.io.IOException;
@@ -28,6 +33,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import uri.FindUri;
+import utils.HandPick_All_Static_Obj;
 
 /**
  * Created by admin on 2016/7/27.
@@ -106,6 +112,27 @@ public class FindQJFragment extends Fragment {
                 }
             }
         });
+        //listview的点击监听事件
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(getActivity(),FindFiveActivity.class);
+                Bundle bundle=new Bundle();
+               // bundle.putSerializable("data",listBeen.get(i).getData());
+                bundle.putSerializable("data",adapter.getData().get(i).getData());
+                intent.putExtras(bundle);
+                intent.putExtra("flag",1);
+                //获取点击的listview的item上的图片
+                ImageView imageView= (ImageView) view.findViewById(R.id.iv);
+                //获取ImageView上的图片,并保存到全局变量bitmap中
+                imageView.buildDrawingCache();
+              //  HandPick_All_Static_Obj.bitmap=null;
+                HandPick_All_Static_Obj.bitmap1 = imageView.getDrawingCache();
+                ActivityTransitionLauncher.with(getActivity())
+                        .from(imageView)
+                        .launch(intent);
+            }
+        });
         return view;
     }
 
@@ -127,7 +154,6 @@ public class FindQJFragment extends Fragment {
                 Log.i("AAA", "===360全景===="+str);
                 Gson gson=new Gson();
                 qj_bean=gson.fromJson(str, Find_QJ_Bean.class);
-             //  listBeen=qj_bean.getItemList();
                listBeen.addAll(qj_bean.getItemList());
                 getActivity().runOnUiThread(new Runnable() {
                     @Override

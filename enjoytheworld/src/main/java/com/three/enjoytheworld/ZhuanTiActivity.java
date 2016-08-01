@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +72,31 @@ public class ZhuanTiActivity extends AppCompatActivity {
                  }else {
                      flag=false;
                  }
+            }
+        });
+        //设置listview的点击事件
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String actionUrl = listBeen.get(i).getData().getActionUrl();
+                try {
+                    //将ActionURL进行解码
+                    String path = URLDecoder.decode(actionUrl, "UTF-8");
+                    Log.i("uuu", "=======: " + path);
+                    //得到"title"在字符串中第一次出现的位置,其实是title中字符t在整个字符串中的位置
+                    int titlePosition = path.indexOf("title");
+                    int urlPosition = path.indexOf("url");
+                    String title = path.substring(titlePosition + 6, urlPosition - 1);
+                    String weburl = path.substring(urlPosition + 4);
+                    Log.i("uuu", "==weburl=== " + weburl);
+                    Log.i("uuu", "===title===: " + title);
+                    Intent intent = new Intent(ZhuanTiActivity.this, FindSecond_TwoActivity.class);
+                    intent.putExtra("title", title);
+                    intent.putExtra("weburl", weburl);
+                    startActivity(intent);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

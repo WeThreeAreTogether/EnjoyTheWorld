@@ -13,14 +13,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
-import com.three.enjoytheworld.FindSecondAcivity;
+import com.three.enjoytheworld.FindFourActivity;
+import com.three.enjoytheworld.FindSecond_TwoActivity;
 import com.three.enjoytheworld.FindThreeActivity;
 import com.three.enjoytheworld.R;
 import com.three.enjoytheworld.ZhuanTiActivity;
-
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import uri.FindUri;
 import utils.FindJson;
+import utils.HandPick_All_Static_Obj;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,7 +89,7 @@ public class FindFragment extends Fragment {
                     @Override
                     public void run() {
                         for (int i = 0; i < totalList.size(); i++) {
-                            if(i==0||i==1)
+                            if(i< HandPick_All_Static_Obj.viewPager_num)
                             {
                                 //加载ViewPager的数据
                                 ImageView imageView=new ImageView(getContext());
@@ -101,27 +103,49 @@ public class FindFragment extends Fragment {
                                 imageView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                       if(view.getTag().equals("0"))
+                                       if(view.getTag().equals((HandPick_All_Static_Obj.viewPager_num-1)+""))
                                        {
-                                           Log.i("nnn", "==========: "+"点击了ViewPager的第一张图片");
-                                           Intent intent=new Intent(getContext(), FindSecondAcivity.class);
-                                           intent.putExtra("title","超级拼的领导人");
+                                           //点击ViewPager的最后一张图片的点击事件
+                                           Intent intent=new Intent(getContext(), FindFourActivity.class);
+                                           intent.putExtra("name","精彩探索");
                                            startActivity(intent);
 
                                        }else {
-                                           //点击ViewPager的第二个图片的点击事件
+                                           String tag=view.getTag().toString();
+                                           int id=Integer.parseInt(tag);
+                                          String actionUrl=totalList.get(id).getActionUrl();
+                                           Log.i("uuu", "===="+actionUrl);
+                                         //  int titlePosition=actionUrl.indexOf("title=");
+                                           try {
+                                               //将ActionURL进行解码
+                                               String path= URLDecoder.decode(actionUrl, "UTF-8");
+                                               Log.i("uuu", "=======: "+path);
+                                               //得到"title"在字符串中第一次出现的位置,其实是title中字符t在整个字符串中的位置
+                                               int titlePosition=path.indexOf("title");
+                                               int urlPosition=path.indexOf("url");
+                                               String title=path.substring(titlePosition+6,urlPosition-1);
+                                               String weburl=path.substring(urlPosition+4);
+                                               Log.i("uuu", "==weburl=== "+weburl);
+                                               Log.i("uuu", "===title===: "+title);
+                                               Intent intent=new Intent(getActivity(), FindSecond_TwoActivity.class);
+                                               intent.putExtra("title",title);
+                                               intent.putExtra("weburl",weburl);
+                                               startActivity(intent);
+                                           } catch (UnsupportedEncodingException e) {
+                                               e.printStackTrace();
+                                           }
                                        }
                                     }
                                 });
 
-                            }else if(i==2)
+                            }else if(i==HandPick_All_Static_Obj.viewPager_num)
                             {
                                 loadImage(totalList.get(i).getImage(),imageView_01);
                             }
-                            else if(i==3)
+                            else if(i==HandPick_All_Static_Obj.viewPager_num+1)
                             {
                                 loadImage(totalList.get(i).getImage(),imageView_02);
-                            }else if(i==4)
+                            }else if(i==HandPick_All_Static_Obj.viewPager_num+2)
                             {
                                 loadImage(totalList.get(i).getImage(),imageView_03);
 

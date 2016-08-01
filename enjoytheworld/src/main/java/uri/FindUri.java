@@ -11,6 +11,11 @@ public class FindUri {
 //  http://baobab.wandoujia.com/api/v1/video/7910   7910 7912 7914 7916 7920 7922
   public static String ViewPager_One="http://baobab.wandoujia.com/api/v1/video/";
 
+//  ViewPager的第二个页卡的点击事件是:
+//
+//  http://baobab.wandoujia.com/api/v3/recommend?udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
+
+  public static String ViewPager_Two="http://baobab.wandoujia.com/api/v3/recommend?udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19";
 //  ViewPager下第一个item的点击事件:  其中需要替换的字段是:strategy=weekly或是monthly或是historical
 //
 //  周排行: http://baobab.wandoujia.com/api/v3/ranklist?num=10&strategy=weekly&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
@@ -47,4 +52,11 @@ public class FindUri {
 //  http://baobab.wandoujia.com/api/v3/videos?categoryId=14&strategy=shareCount&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19
 
   public static String WangGe="http://baobab.wandoujia.com/api/v3/videos?categoryId=%s&strategy=%s&udid=ac15f72cf3cc413d955d873cf26c13db27abd380&vc=121&vn=2.3.5&deviceModel=VPhone&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=19";
+
+//  item的点击事件: 将8196替换为所点击条目的id  播放的详情页
+//
+//  http://baobab.wandoujia.com/api/v2/video/8196?udid=d5c5ee1d70a64c7093dd616bda3a557ab483f172&vc=121&vn=2.3.5&deviceModel=Custom%20Phone%20-%205.0.0%20-%20API%2021%20-%20768x1280&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=21
+ public static String item_click_base="http://baobab.wandoujia.com/api/v2/video/";
+  public static String item_click_end="?udid=d5c5ee1d70a64c7093dd616bda3a557ab483f172&vc=121&vn=2.3.5&deviceModel=Custom%20Phone%20-%205.0.0%20-%20API%2021%20-%20768x1280&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=21";
+
 }

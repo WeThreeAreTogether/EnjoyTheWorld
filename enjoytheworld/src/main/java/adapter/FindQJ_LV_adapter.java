@@ -36,7 +36,10 @@ public class FindQJ_LV_adapter extends BaseAdapter{
             this.listBeen=listBeen;
         }
     }
-
+ public  List<Find_QJ_Bean.ItemListBean>  getData()
+ {
+     return  this.listBeen;
+ }
     @Override
     public int getCount() {
         return listBeen==null?0:listBeen.size();

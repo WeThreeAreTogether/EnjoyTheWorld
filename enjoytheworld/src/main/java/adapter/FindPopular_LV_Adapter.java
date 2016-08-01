@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.kogitune.activity_transition.ActivityTransitionLauncher;
 import com.squareup.picasso.Picasso;
+import com.three.enjoytheworld.FindFiveActivity;
+import com.three.enjoytheworld.FindThreeActivity;
 import com.three.enjoytheworld.R;
 
 import java.util.ArrayList;

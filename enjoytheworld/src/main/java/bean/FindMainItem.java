@@ -7,10 +7,20 @@ public class FindMainItem {
     String image;
     String id;
     String tltle;
-    public FindMainItem(String image, String id, String tltle) {
+    String actionUrl;
+    public FindMainItem(String image, String id, String tltle,String actionUrl) {
         this.image = image;
         this.id = id;
         this.tltle = tltle;
+        this.actionUrl=actionUrl;
+    }
+
+    public String getActionUrl() {
+        return actionUrl;
+    }
+
+    public void setActionUrl(String actionUrl) {
+        this.actionUrl = actionUrl;
     }
 
     public String getImage() {

@@ -10,6 +10,8 @@
     <color name="colorWhite">#ffffffff</color>
     <color name="colorAlpha">#55ffffff</color>
 
+    <color name="holo_blue">#FF33E5B5</color>
+
     <!--自定义一个主题背景颜色-->
     <color name="translucent_background">#0000</color>
 
